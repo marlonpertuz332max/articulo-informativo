@@ -708,3 +708,103 @@ body::before {
     transform: translateX(5px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
+/* VERSIÓN MEJORADA CON EFECTOS VISUALES */
+.acc-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 20px;
+    position: relative;
+}
+
+.acc-input:checked ~ .acc-body {
+    max-height: 450px;
+    padding: 20px;
+    overflow-y: auto;
+    display: block;
+    
+    /* Efecto de sombra para indicar scroll */
+    box-shadow: 
+        inset 0 10px 10px -10px rgba(0,0,0,0.1),
+        inset 0 -10px 10px -10px rgba(0,0,0,0.1);
+}
+
+/* Indicador visual de que hay más contenido */
+.acc-body::before {
+    content: '↙ Desplaza para ver más ↙';
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.7em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.acc-body:not(:hover)::before {
+    opacity: 0.8;
+}
+
+/* Barras de scroll personalizadas */
+.acc-body::-webkit-scrollbar {
+    width: 12px;
+}
+
+.acc-body::-webkit-scrollbar-track {
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin: 8px 0;
+    border: 1px solid #e9ecef;
+}
+
+.acc-body::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+    border-radius: 10px;
+    border: 3px solid #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.acc-body::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--color-accent), var(--color-primary));
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.acc-body::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* Para Firefox */
+.acc-body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-secondary) #f8f9fa;
+}
+/* RESPONSIVE - Ajustes para móviles */
+@media (max-width: 768px) {
+    .acc-input:checked ~ .acc-body {
+        max-height: 60vh; /* Porcentaje de la pantalla en móviles */
+    }
+    
+    /* Alturas específicas para móviles */
+    #acc-marlon:checked ~ .acc-body { max-height: 50vh; }
+    #acc-mayerly:checked ~ .acc-body { max-height: 65vh; }
+    #acc-luz:checked ~ .acc-body { max-height: 55vh; }
+    #acc-saray:checked ~ .acc-body { max-height: 70vh; }
+    #acc-kenia:checked ~ .acc-body { max-height: 45vh; }
+    #acc-michell:checked ~ .acc-body { max-height: 65vh; }
+    #acc-referencias:checked ~ .acc-body { max-height: 70vh; }
+    #acc-conclusion:checked ~ .acc-body { max-height: 60vh; }
+    
+    .acc-body::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .acc-body::before {
+        font-size: 0.6em;
+        bottom: 5px;
+    }
+}
