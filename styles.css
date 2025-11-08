@@ -620,3 +620,54 @@ body::before {
         padding: 20px;
     }
 }
+/* Estilos para los enlaces de referencias */
+.ref-link {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 5px 12px;
+    background: var(--color-secondary);
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+    font-size: 0.8em;
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-secondary);
+}
+
+.ref-link:hover {
+    background: white;
+    color: var(--color-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.referencias-nota {
+    margin-top: 25px;
+    padding: 15px;
+    background: #e8f4fd;
+    border-left: 4px solid #17a2b8;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.9em;
+    color: #055160;
+}
+
+.referencias-nota strong {
+    color: #055160;
+}
+
+/* Mejorar el espaciado de los items de referencia */
+.referencia-item {
+    background: #f8f9fa;
+    border-left: 4px solid #6c757d;
+    padding: 18px;
+    margin-bottom: 15px;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.9em;
+    line-height: 1.5;
+    transition: transform 0.2s ease;
+}
+
+.referencia-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
